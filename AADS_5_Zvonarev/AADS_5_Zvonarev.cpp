@@ -14,11 +14,13 @@ int hashMultiplication(int key, int tableSize) {
 }
 
 int hashString(const string &key, int tableSize) {
-    int hashValue = 0;
-    for (char ch : key) {
-        hashValue = (hashValue * 31 + ch) % tableSize;
+    int L = key.length();
+    long long int suma = 0;
+    int a = 32;
+    for (int i = 0; i < L; i++) {
+        suma = suma + (int)key[i] * ((long long int)pow(a, i));
     }
-    return hashValue;
+    return suma % tableSize;
 }
 
 int main() {
